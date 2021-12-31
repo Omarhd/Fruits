@@ -11,6 +11,8 @@ struct SettingsView: View {
     
     // MARK: - PROPERTIES
     @Environment (\.presentationMode) var presentationMode
+    @AppStorage("isOnBoarding") var isOnBoarding: Bool = false
+
     // MARK: - BODY
     var body: some View {
         NavigationView {
@@ -36,6 +38,27 @@ struct SettingsView: View {
                     }
                     
                     // SECTION 2
+                    GroupBox(
+                        label:SettingsLabelView(labelText: "Customization", labelImage: "paintbrush")
+                    ) {
+                        Divider().padding(.vertical, 4)
+                        Text("customization your seetings and onboarding screen to show on or off by using switcher hehehe.")
+                            .padding(.vertical, 8)
+                            .frame(minHeight: 80)
+                            .layoutPriority(1)
+                            .font(.footnote)
+                            .multilineTextAlignment(.leading)
+                        
+                        Toggle(isOn: $isOnBoarding) {
+                            Text("Restart".uppercased())
+                        }
+                        
+                        .padding()
+                        .background(
+                            Color(UIColor.tertiarySystemBackground).clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        )
+                        
+                    }
 
                     
                     // SECTION 3
